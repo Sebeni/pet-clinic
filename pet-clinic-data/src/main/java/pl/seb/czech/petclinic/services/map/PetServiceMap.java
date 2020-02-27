@@ -2,10 +2,11 @@ package pl.seb.czech.petclinic.services.map;
 
 import pl.seb.czech.petclinic.model.Pet;
 import pl.seb.czech.petclinic.services.CrudService;
+import pl.seb.czech.petclinic.services.PetService;
 
 import java.util.Set;
 
-public class PetServiceMap extends AbstractMapService<Pet, Long>  implements CrudService<Pet, Long> {
+public class PetServiceMap extends AbstractMapService<Pet, Long>  implements PetService {
 
     @Override
     public Set<Pet> findAll() {
