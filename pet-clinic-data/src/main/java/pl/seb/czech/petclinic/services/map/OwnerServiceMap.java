@@ -7,6 +7,7 @@ import pl.seb.czech.petclinic.services.OwnerService;
 import pl.seb.czech.petclinic.services.PetService;
 import pl.seb.czech.petclinic.services.PetTypeService;
 
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -31,10 +32,10 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long>  implements
     }
 
     @Override
-    public Owner save(Owner object) {
-        if(object != null) {
-            if (object.getPets() != null) {
-                object.getPets().forEach(pet -> {
+    public Owner save(Owner owner) {
+        if(owner != null) {
+            if (owner.getPets() != null) {
+                owner.getPets().forEach(pet -> {
                     if(pet.getPetType() != null) {
                         if(pet.getPetType().getId() == null) {
                             pet.setPetType(petTypeService.save(pet.getPetType()));
@@ -49,8 +50,7 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long>  implements
                     }
                 });
             }
-            
-            return super.save(object);
+            return super.save(owner);
         } else {
             return null;
         }
